@@ -1,0 +1,47 @@
+$ brew install node
+$ node -v
+v7.7.2
+$ brew install mongo
+$ sudo mkdir -p /data/db
+$ sudo chown -Rv kan1shka9 /data/db
+$ mongod
+OR
+$ brew services start mongo
+$ brew services stop mongo
+
+https://robomongo.org/download
+
+https://github.com/StephenGrider/MongoCasts
+
+Promise
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+It is a tool for managing asynchronous code flow through out our application.
+Promise is a tool for handling any code that is going to execute at some point in the future.
+
+Mongoose
+ORM / ODM
+ORM -> Object Relational mapping
+It is a programming technique for converting data between incompatible type systems in object-oriented programming languages.
+ODM -> Object Data Mapping
+
+Mongo
+It has multiple databases within a single mongo instance
+
+Collection
+Collection is a core unit of what stores data inside a database
+
+Mongoose
+Mongoose is a library that we are going to use to give us a very nice and elegant API to work with mongo.
+
+Core Mongoose/Mongo (CRUD)
+Create
+Read
+Update
+Destroy
+
+$ mkdir prod
+$ cd prod
+$ mkdir users
+$ cd users
+$ npm init
+$ npm install --save mocha nodemon mongoose
