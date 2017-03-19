@@ -90,5 +90,6 @@ $ npm init
 $ npm install --save mocha nodemon mongoose
 $ node test/test_helper.js
 Good to go!
+$ npm run test
 
 ********************************************************************************************************************
