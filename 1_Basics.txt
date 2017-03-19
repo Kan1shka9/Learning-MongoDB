@@ -1,8 +1,12 @@
+Installation
+
 $ brew install node
 $ node -v
 v7.7.2
 $ brew install mongo
 $ sudo mkdir -p /data/db
+$ whoami
+kan1shka9
 $ sudo chown -Rv kan1shka9 /data/db
 $ mongod
 OR
