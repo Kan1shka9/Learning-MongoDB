@@ -7,8 +7,8 @@ describe('Creating records', () => {
 
     joe.save()
       .then(() => {
-        // Has joe been saved successfully
-        assert(!joe.isNEW);
+        // Has joe been saved successfully?
+        assert(!joe.isNew);
         done();
       });
   });
