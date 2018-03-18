@@ -123,3 +123,34 @@ u64@vm:~$
 ```
 pip install bottle
 ```
+
+`bottle_getting_started.py`
+
+```python
+from bottle import route, run, template
+
+@route('/hello/<name>')
+def index(name):
+    return template('<b>Hello {{name}}</b>!', name=name)
+
+run(host='localhost', port=8080)
+```
+
+```sh
+u64@vm:~$ python bottle_getting_started.py
+Bottle v0.12.13 server starting up (using WSGIRefServer())...
+Listening on http://localhost:8080/
+Hit Ctrl-C to quit.
+
+127.0.0.1 - - [18/Mar/2018 09:42:24] "GET / HTTP/1.1" 404 720
+127.0.0.1 - - [18/Mar/2018 09:42:24] "GET /favicon.ico HTTP/1.1" 404 742
+127.0.0.1 - - [18/Mar/2018 09:42:39] "GET / HTTP/1.1" 404 720
+127.0.0.1 - - [18/Mar/2018 09:42:39] "GET /favicon.ico HTTP/1.1" 404 742
+127.0.0.1 - - [18/Mar/2018 09:43:58] "GET /hello/kan1shka9 HTTP/1.1" 200 23
+```
+
+```
+http://localhost:8080/hello/kan1shka9
+```
+
+![](images/0/1.png)
