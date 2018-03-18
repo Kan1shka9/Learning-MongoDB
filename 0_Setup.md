@@ -1,8 +1,8 @@
 #### 0. Setup
 
 - [Install `MongoDB` Community Edition on `Ubuntu`](https://docs.mongodb.com/getting-started/shell/tutorial/install-mongodb-on-ubuntu/)
-- [Install `pip`]()
-- [Install `pymongo`]()
+- [Install `pip`](#install-pip)
+- [Install `pymongo`](#install-pymongo)
 	- [`PyMongo`](https://api.mongodb.com/python/current/)
 - [Install `bottle`]()
 	- [`Bottle: Python Web Framework`](https://bottlepy.org/docs/dev/)
