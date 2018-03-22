@@ -169,3 +169,42 @@ http://localhost:8082/
 ```
 
 ![](images/0/2.png)
+
+```sh
+u64@vm:~/Desktop$ mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings:
+2018-03-22T08:47:26.780-0700 I STORAGE  [initandlisten]
+2018-03-22T08:47:26.780-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2018-03-22T08:47:26.780-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2018-03-22T08:47:29.249-0700 I CONTROL  [initandlisten]
+2018-03-22T08:47:29.249-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-03-22T08:47:29.249-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-03-22T08:47:29.249-0700 I CONTROL  [initandlisten]
+> var j = db.names.findOne()
+> j
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "kan1shka9" }
+> j.name = 'kanishka sunnam'
+kanishka sunnam
+> db.names.save(j)
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.names.findOne()
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "kanishka sunnam" }
+>
+bye
+u64@vm:~/Desktop$
+```
+
+```sh
+u64@vm:~/Desktop$ python hello_bottle.py
+Bottle v0.12.13 server starting up (using WSGIRefServer())...
+Listening on http://localhost:8082/
+Hit Ctrl-C to quit.
+
+127.0.0.1 - - [22/Mar/2018 09:14:41] "GET / HTTP/1.1" 200 29
+127.0.0.1 - - [22/Mar/2018 09:14:42] "GET /favicon.ico HTTP/1.1" 404 742
+```
+
+![](images/0/3.png)
