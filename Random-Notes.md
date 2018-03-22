@@ -26,19 +26,3 @@
 ###### Application Architecture
 
 ![](images/notes/3.png)
-
-###### Quiz
-
-![](images/notes/1.png)
-
-![](images/notes/2.png)
-
-![](images/notes/4.png)
-
-![](images/notes/5.png)
-
-![](images/notes/6.png)
-
-![](images/notes/7.png)
-
-![](images/notes/8.png)
