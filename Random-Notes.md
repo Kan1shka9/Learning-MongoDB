@@ -36,3 +36,5 @@
 ![](images/notes/4.png)
 
 ![](images/notes/5.png)
+
+![](images/notes/6.png)
