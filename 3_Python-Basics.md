@@ -68,3 +68,19 @@ Hello kanishka sunnam
 [0, 1, 2, 3, 4, 5]
 >>>
 ```
+
+```
+>>> a = ['apple', 'pear', 'oranges']
+>>> 'pear' in a
+True
+>>> 'grape' in a
+False
+>>> if 'pear' in a:
+...     print("There is a pear")
+...
+There is a pear
+>>> if 'grape' in a:
+...     print("There is a grape")
+...
+>>>
+```
