@@ -125,6 +125,8 @@ http://localhost:8080/hello/kan1shka9
 
 ![](images/0/1.png)
 
+`hello_bottle.py`
+
 ```python
 
 import bottle
