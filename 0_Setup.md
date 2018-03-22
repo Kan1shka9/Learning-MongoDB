@@ -14,25 +14,6 @@ sudo service mongod start
 ```
 
 ```sh
-u64@vm:~$ mongod
-2018-03-12T10:38:39.460-0700 I CONTROL  [initandlisten] MongoDB starting : pid=4447 port=27017 dbpath=/data/db 64-bit host=vm
-2018-03-12T10:38:39.460-0700 I CONTROL  [initandlisten] db version v3.6.3
-2018-03-12T10:38:39.461-0700 I CONTROL  [initandlisten] git version: 9586e557d54ef70f9ca4b43c26892cd55257e1a5
-2018-03-12T10:38:39.461-0700 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
-2018-03-12T10:38:39.461-0700 I CONTROL  [initandlisten] allocator: tcmalloc
-2018-03-12T10:38:39.462-0700 I CONTROL  [initandlisten] modules: none
-2018-03-12T10:38:39.462-0700 I CONTROL  [initandlisten] build environment:
-2018-03-12T10:38:39.462-0700 I CONTROL  [initandlisten]     distmod: ubuntu1604
-2018-03-12T10:38:39.463-0700 I CONTROL  [initandlisten]     distarch: x86_64
-2018-03-12T10:38:39.463-0700 I CONTROL  [initandlisten]     target_arch: x86_64
-2018-03-12T10:38:39.463-0700 I CONTROL  [initandlisten] options: {}
-2018-03-12T10:38:39.464-0700 I STORAGE  [initandlisten] exception in initAndListen: IllegalOperation: Attempted to create a lock file on a read-only directory: /data/db, terminating
-2018-03-12T10:38:39.464-0700 I CONTROL  [initandlisten] now exiting
-2018-03-12T10:38:39.464-0700 I CONTROL  [initandlisten] shutting down with code:100
-u64@vm:~$
-```
-
-```sh
 u64@vm:~$ mongo
 MongoDB shell version v3.6.3
 connecting to: mongodb://127.0.0.1:27017
