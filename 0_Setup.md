@@ -124,3 +124,44 @@ http://localhost:8080/hello/kan1shka9
 ```
 
 ![](images/0/1.png)
+
+```python
+
+import bottle
+import pymongo
+
+# this is the handler for the default path of the web server
+@bottle.route('/')
+def index():
+
+    # connect to mongoDB
+    connection = pymongo.MongoClient('localhost', 27017)
+
+    # attach to test database
+    db = connection.test
+
+    # get handle for names collection
+    name = db.names
+
+    # find a single document
+    item = name.find_one()
+
+    return '<b>Hello %s!</b>' % item['name']
+
+
+bottle.run(host='localhost', port=8082)
+```
+
+```sh
+u64@vm:~/Desktop$ python hello_bottle.py
+Bottle v0.12.13 server starting up (using WSGIRefServer())...
+Listening on http://localhost:8082/
+Hit Ctrl-C to quit.
+
+127.0.0.1 - - [22/Mar/2018 09:05:17] "GET / HTTP/1.1" 200 23
+127.0.0.1 - - [22/Mar/2018 09:05:18] "GET /favicon.ico HTTP/1.1" 404 742
+```
+
+```
+http://localhost:8082/
+```
