@@ -223,3 +223,45 @@ DBQuery.prototype.next@src/mongo/shell/query.js:305:1
 false
 >
 ```
+
+```
+> db.names.find()
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "First" }
+> var j = db.names.findOne()
+> j
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "First" }
+> j.name = "kan1shka9"
+kan1shka9
+> db.names.save(j)
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> j
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "kan1shka9" }
+> db.names.find()
+{ "_id" : ObjectId("5ab3d1313c8be27a7b7b8876"), "name" : "kan1shka9" }
+>
+```
+
+```sh
+u64@vm:~/Desktop$ python pymongo_getting_started.py
+kan1shka9
+u64@vm:~/Desktop$
+```
+
+```
+> db.names.save
+function (obj, opts) {
+    if (obj == null)
+        throw Error("can't save a null");
+
+    if (typeof(obj) == "number" || typeof(obj) == "string")
+        throw Error("can't save a number or string");
+
+    if (typeof(obj._id) == "undefined") {
+        obj._id = new ObjectId();
+        return this.insert(obj, opts);
+    } else {
+        return this.update({_id: obj._id}, obj, Object.merge({upsert: true}, opts));
+    }
+}
+>
+```
