@@ -253,3 +253,42 @@ print counts
 {'orange': 2, 'kiwi': 1, 'grape': 1, 'apple': 2}
 ☁  python [master] ⚡
 ```
+
+###### Exceptions
+
+`exception_uncaught.py`
+
+```python
+print 5 / 0
+
+print "but life goes on"
+```
+
+```sh
+☁  python [master] ⚡ python exception_uncaught.py
+Traceback (most recent call last):
+  File "exception_uncaught.py", line 1, in <module>
+    print 5 / 0
+ZeroDivisionError: integer division or modulo by zero
+☁  python [master] ⚡
+```
+
+`exception_caught.py`
+
+```python
+import sys
+
+try:
+    print 5 / 0
+except Exception as e:
+    print "exception: ", type(e), e
+
+print "but life goes on"
+```
+
+```sh
+☁  python [master] ⚡ python exception_caught.py
+exception:  <type 'exceptions.ZeroDivisionError'> integer division or modulo by zero
+but life goes on
+☁  python [master] ⚡
+```
