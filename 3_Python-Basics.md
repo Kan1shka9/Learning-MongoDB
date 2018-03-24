@@ -126,7 +126,9 @@ False
 >>>
 ```
 
-###### Loops
+###### For Loop
+
+- **Loops with `list`**
 
 `loops.py`
 
@@ -165,5 +167,89 @@ print i
 ```sh
 ☁  python [master] ⚡ python loops_2.py
 8
+☁  python [master] ⚡
+```
+
+- **Loops with `dict`**
+
+`loops_3.py`
+
+```python
+person = {'name':'Kanishka Sunnam', 'fav_color': 'white', 'hair': 'black'} # init a dict
+
+for key in person:	# iterate
+	print "key is " + key + ", value is " + person[key]
+```
+
+```sh
+☁  python [master] ⚡ python loops_3.py
+key is hair, value is black
+key is fav_color, value is white
+key is name, value is Kanishka Sunnam
+☁  python [master] ⚡
+```
+
+`loops_4.py`
+
+```python
+people = {'name': 'Bob', 'hometown': "Palo Alto", 'favorite_color': 'red'}
+for item in people:
+    if (item == 'favorite_color'):
+        print people[item]
+```
+
+```sh
+☁  python [master] ⚡ python loops_4.py
+red
+☁  python [master] ⚡
+```
+
+###### While loop
+
+`loops_5.py`
+
+```python
+fruit = ['apple', 'orange', 'grape']	# init the array
+
+i = 0
+while (i < len(fruit)):
+	print fruit[i]
+	i = i + 1
+```
+
+```sh
+☁  python [master] ⚡ python loops_5.py
+apple
+orange
+grape
+☁  python [master] ⚡
+```
+
+###### Functions
+
+`functions.py`
+
+```python
+fruit = ['apple', 'orange', 'grape', 'kiwi', 'orange', 'apple'] # init the array
+
+# reports the frequency of every item in a list
+def analyze_list(l):
+
+	counts = {} # init an empty dict
+	for item in l:
+		if item in counts:
+			counts[item] = counts[item] + 1
+		else:
+			counts[item] = 1
+	return counts
+
+# lets analyze a list
+counts = analyze_list(fruit)
+print counts
+```
+
+```sh
+☁  python [master] ⚡ python functions.py
+{'orange': 2, 'kiwi': 1, 'grape': 1, 'apple': 2}
 ☁  python [master] ⚡
 ```
