@@ -1,5 +1,14 @@
 #### 3. Python Basics
 
+- [Strings and Concatenation]()
+- [Lists]()
+- [Dictionary]()
+- [List and Dictionary]()
+- [For Loop]()
+- [While Loop]()
+- [Functions]()
+- [Exceptions]()
+
 ```sh
 ☁  ~  python
 Python 2.7.10 (default, Jul 15 2017, 17:16:57)
