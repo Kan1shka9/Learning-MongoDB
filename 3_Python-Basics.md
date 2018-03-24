@@ -111,3 +111,59 @@ True
 False
 >>>
 ```
+
+###### List and Dictionary
+
+```
+>>> a = {"name":"kanishka sunnam", "interests":["cycling", "running", "golf"]}
+>>> a
+{'interests': ['cycling', 'running', 'golf'], 'name': 'kanishka sunnam'}
+>>> a["interests"][1]
+'running'
+>>> a["interests"].append("swimming")
+>>> a
+{'interests': ['cycling', 'running', 'golf', 'swimming'], 'name': 'kanishka sunnam'}
+>>>
+```
+
+###### Loops
+
+`loops.py`
+
+```python
+fruit = ['apple', 'orange', 'grape'] # init the array
+
+new_fruit = []
+
+for item in fruit:	# iterate
+	print item
+
+	new_fruit.append(item)
+
+print new_fruit
+```
+
+```sh
+☁  python [master] ⚡ python loops.py
+apple
+orange
+grape
+['apple', 'orange', 'grape']
+☁  python [master] ⚡
+```
+
+`loops_2.py`
+
+```python
+sum = 0
+numbers = [1, 2, 3, 5, 8]
+for i in numbers:
+    sum = sum + i
+print i
+```
+
+```sh
+☁  python [master] ⚡ python loops_2.py
+8
+☁  python [master] ⚡
+```

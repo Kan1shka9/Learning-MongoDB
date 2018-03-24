@@ -21,3 +21,7 @@
 ![](images/quiz/11.png)
 
 ![](images/quiz/12.png)
+
+![](images/quiz/13.png)
+
+![](images/quiz/14.png)
