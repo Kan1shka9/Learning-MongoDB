@@ -84,3 +84,30 @@ There is a pear
 ...
 >>>
 ```
+
+###### Dictionary
+
+```
+>>> g = {'name': 'Kanishka Sunnam', 'city_of_birth': 'Vizag'}
+>>> g
+{'city_of_birth': 'Vizag', 'name': 'Kanishka Sunnam'}
+>>> g['name']
+'Kanishka Sunnam'
+>>> g['name'] = "kan1shka9"
+>>> g
+{'city_of_birth': 'Vizag', 'name': 'kan1shka9'}
+>>> g.keys()
+['city_of_birth', 'name']
+>>> del(g['name'])
+>>> g
+{'city_of_birth': 'Vizag'}
+>>> del(g['foo'])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'foo'
+>>> 'city_of_birth' in g
+True
+>>> 'foo' in g
+False
+>>>
+```

@@ -19,3 +19,5 @@
 ![](images/quiz/10.png)
 
 ![](images/quiz/11.png)
+
+![](images/quiz/12.png)
