@@ -1,13 +1,13 @@
 #### 3. Python Basics
 
-- [Strings and Concatenation]()
-- [Lists]()
-- [Dictionary]()
-- [List and Dictionary]()
-- [For Loop]()
-- [While Loop]()
-- [Functions]()
-- [Exceptions]()
+- [Strings and Concatenation](#strings-and-concatenation)
+- [Lists](#lists)
+- [Dictionary](#dictionary)
+- [List and Dictionary](#list-and-dictionary)
+- [For Loop](#for-loop)
+- [While Loop](#while-loop)
+- [Functions](#functions)
+- [Exceptions](#exceptions)
 
 ```sh
 ☁  ~  python
