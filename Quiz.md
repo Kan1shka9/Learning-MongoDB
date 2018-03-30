@@ -1,5 +1,7 @@
 #### Quiz
 
+###### Week 1
+
 ![](images/quiz/1.png)
 
 ![](images/quiz/2.png)
@@ -27,3 +29,9 @@
 ![](images/quiz/14.png)
 
 ![](images/quiz/15.png)
+
+###### Week 2
+
+![](images/quiz/16.png)
+
+![](images/quiz/17.png)
