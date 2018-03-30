@@ -1,4 +1,4 @@
-#### 7. Reading Documents
+#### 8. Reading Documents
 
 - [insertMany]()
 - [Find the entire document]()
