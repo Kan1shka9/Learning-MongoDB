@@ -35,3 +35,5 @@
 ![](images/quiz/16.png)
 
 ![](images/quiz/17.png)
+
+![](images/quiz/18.png)
