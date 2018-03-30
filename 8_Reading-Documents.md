@@ -1,14 +1,14 @@
 #### 8. Reading Documents
 
-- [insertMany]()
-- [Find the entire document]()
-- [Equality matching based on a specific element]()
-- [Equality matching based on specific elements]()
-- [Equality matching based on a nested element]()
-- [Equality match based on the entire array]()
-- [Equality matching based position in an array]()
-- [Cursors]()
-- [Projections]()
+- [insertMany](#insertmany)
+- [Find the entire document](#find-the-entire-document)
+- [Equality matching based on a specific element](#equality-matching-based-on-a-specific-element)
+- [Equality matching based on specific elements](#equality-matching-based-on-specific-elements)
+- [Equality matching based on a nested element](#equality-matching-based-on-a-nested-element)
+- [Equality match based on the entire array](#equality-match-based-on-the-entire-array)
+- [Equality matching based position in an array](#equality-matching-based-position-in-an-array)
+- [Cursors](#cursors)
+- [Projections](#projections)
 
 ###### insertMany
 
