@@ -1,8 +1,8 @@
 #### 6. Create Documents
 
-- [`insertOne` without `id`]()
-- [`insertOne` with `id`]()
-- [`insertMany`]()
+- [`insertOne` without `id`](#insertone-without-id)
+- [`insertOne` with `id`](#insertone-with-id)
+- [`insertMany`](#insertmany)
 
 ```
 > show dbs
