@@ -17,9 +17,12 @@ def find():
     try:
         cursor = scores.find(query).skip(4)
         cursor.limit(1)
+
+        # Sorting using single key
 #        cursor.sort('student_id', pymongo.ASCENDING).skip(4).limit(1)
-        cursor.sort([('student_id', pymongo.ASCENDING),
-                     ('score', pymongo.DESCENDING)])
+
+        # Sorting using multiple key
+        cursor.sort([('student_id', pymongo.ASCENDING), ('score', pymongo.DESCENDING)])
 
     except Exception as e:
         print "Unexpected error:", type(e), e
