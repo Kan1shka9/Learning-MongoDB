@@ -66,3 +66,15 @@
 ![](images/quiz/30.png)
 
 ![](images/quiz/31.png)
+
+![](images/quiz/32.png)
+
+![](images/quiz/33.png)
+
+![](images/quiz/34.png)
+
+![](images/quiz/35.png)
+
+![](images/quiz/36.png)
+
+![](images/quiz/37.png)
