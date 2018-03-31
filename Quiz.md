@@ -61,3 +61,5 @@
 ![](images/quiz/29.png)
 
 ![](images/quiz/30.png)
+
+![](images/quiz/31.png)
