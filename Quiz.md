@@ -1,5 +1,8 @@
 #### Quiz
 
+- [Week 1](#week-1)
+- [Week 2](#week-2)
+
 ###### Week 1
 
 ![](images/quiz/1.png)
