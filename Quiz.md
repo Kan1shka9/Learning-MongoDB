@@ -51,3 +51,7 @@
 ![](images/quiz/24.png)
 
 ![](images/quiz/25.png)
+
+![](images/quiz/26.png)
+
+![](images/quiz/27.png)
