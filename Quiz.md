@@ -47,3 +47,7 @@
 ![](images/quiz/22.png)
 
 ![](images/quiz/23.png)
+
+![](images/quiz/24.png)
+
+![](images/quiz/25.png)
