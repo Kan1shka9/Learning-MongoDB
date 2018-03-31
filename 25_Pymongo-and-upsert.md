@@ -1,5 +1,7 @@
 #### 25. Pymongo and upsert
 
+![](images/25/1.png)
+
 ###### `using_upsert.py`
 
 ```python
@@ -46,5 +48,37 @@ updating with upsert
 apple:  {u'color': u'red', u'thing': u'apple', u'_id': ObjectId('5abee9ad09c41a95745d8e2d')}
 banana:  {u'color': u'yellow', u'thing': u'banana', u'_id': ObjectId('5abee9ad09c41a95745d8e2f')}
 pear:  None
+u64@vm:~/Desktop$
+```
+
+```sh
+u64@vm:~/Desktop$ mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings:
+2018-03-30T09:49:35.659-0700 I STORAGE  [initandlisten]
+2018-03-30T09:49:35.659-0700 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2018-03-30T09:49:35.659-0700 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2018-03-30T09:49:36.582-0700 I CONTROL  [initandlisten]
+2018-03-30T09:49:36.582-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-03-30T09:49:36.582-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-03-30T09:49:36.583-0700 I CONTROL  [initandlisten]
+> show dbs
+admin   0.000GB
+config  0.000GB
+reddit  0.000GB
+school  0.000GB
+test    0.000GB
+> use test
+switched to db test
+> show collections
+things
+> db.things.find()
+{ "_id" : ObjectId("5abee9ad09c41a95745d8e2d"), "thing" : "apple", "color" : "red" }
+{ "_id" : ObjectId("5abee9ad09c41a95745d8e2f"), "thing" : "banana", "color" : "yellow" }
+{ "_id" : ObjectId("5abee9ad09c41a95745d8e31"), "color" : "green" }
+>
+bye
 u64@vm:~/Desktop$
 ```
