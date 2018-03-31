@@ -43,3 +43,7 @@
 ![](images/quiz/20.png)
 
 ![](images/quiz/21.png)
+
+![](images/quiz/22.png)
+
+![](images/quiz/23.png)
