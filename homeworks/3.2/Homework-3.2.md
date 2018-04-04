@@ -162,3 +162,5 @@ Trying to submit a blog comment for post with title aEWNKBSlqgFxMtYFcxYcwxvxapmo
 Can't add blog comments (so HW 3.3 not yet complete)
 u64@vm:~/Desktop/hw3-2and3-3$
 ```
+
+![](images/13.png)
