@@ -3,6 +3,7 @@
 - [Week 1](#week-1)
 - [Week 2](#week-2)
 - [Week 3](#week-3)
+- [Week 4](#week-4)
 
 ###### Week 1
 
@@ -95,3 +96,25 @@
 ![](images/quiz/43.png)
 
 ![](images/quiz/44.png)
+
+###### Week 4
+
+![](images/quiz/45.png)
+
+![](images/quiz/46.png)
+
+![](images/quiz/47.png)
+
+![](images/quiz/48.png)
+
+![](images/quiz/49.png)
+
+![](images/quiz/50.png)
+
+![](images/quiz/51.png)
+
+![](images/quiz/52.png)
+
+![](images/quiz/53.png)
+
+![](images/quiz/54.png)
