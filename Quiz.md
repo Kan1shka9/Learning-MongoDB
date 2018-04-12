@@ -118,3 +118,25 @@
 ![](images/quiz/53.png)
 
 ![](images/quiz/54.png)
+
+![](images/quiz/55.png)
+
+![](images/quiz/56.png)
+
+![](images/quiz/57.png)
+
+![](images/quiz/58.png)
+
+![](images/quiz/59.png)
+
+![](images/quiz/60.png)
+
+![](images/quiz/61.png)
+
+![](images/quiz/62.png)
+
+![](images/quiz/63.png)
+
+![](images/quiz/64.png)
+
+![](images/quiz/65.png)
