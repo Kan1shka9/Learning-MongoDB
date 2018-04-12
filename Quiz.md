@@ -140,3 +140,21 @@
 ![](images/quiz/64.png)
 
 ![](images/quiz/65.png)
+
+![](images/quiz/66.png)
+
+![](images/quiz/67.png)
+
+![](images/quiz/68.png)
+
+![](images/quiz/69.png)
+
+![](images/quiz/70.png)
+
+![](images/quiz/71.png)
+
+![](images/quiz/72.png)
+
+![](images/quiz/73.png)
+
+![](images/quiz/74.png)

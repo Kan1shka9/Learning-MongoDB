@@ -2395,3 +2395,257 @@ switched to db school
 }
 >
 ```
+
+###### Index Cardinality
+
+![](images/29/7.png)
+
+That cost only exists in the MMAPv1 storage engine. In the WiredTiger storage engine, index entries don't contain pointers to actual disk locations. Instead, in WiredTiger, the index points to an internal document identifier (the RecordId) that is immutable. Therefore, when a document is updated, its index does not need to be updated at all.
+
+###### Geospatial Indexes
+
+![](images/29/8.png)
+
+```sh
+> db.stores.insert({'name':'Ruby', 'type':'Barber', 'location': '[40,74]'});
+WriteResult({ "nInserted" : 1 })
+> db.stores.insert({'name':'ACE Hardware', 'type':'Hardware', 'location': '[40.232,-74.343]'});
+WriteResult({ "nInserted" : 1 })
+> db.stores.insert({'name':'Tickel Candy', 'type':'Food', 'location': '[41.232,-75.343]'});
+WriteResult({ "nInserted" : 1 })
+>
+> db.stores.find().pretty()
+{
+	"_id" : ObjectId("5acf7d6b8914587c6a6e085b"),
+	"name" : "Ruby",
+	"type" : "Barber",
+	"location" : "[40,74]"
+}
+{
+	"_id" : ObjectId("5acf7d9e8914587c6a6e085c"),
+	"name" : "ACE Hardware",
+	"type" : "Hardware",
+	"location" : "[40.232,-74.343]"
+}
+{
+	"_id" : ObjectId("5acf7ddc8914587c6a6e085d"),
+	"name" : "Tickel Candy",
+	"type" : "Food",
+	"location" : "[41.232,-75.343]"
+}
+>
+> db.stores.createIndex({location:'2d', type:1});
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+>
+> db.stores.getIndexes();
+[
+	{
+		"v" : 2,
+		"key" : {
+			"_id" : 1
+		},
+		"name" : "_id_",
+		"ns" : "school.stores"
+	},
+	{
+		"v" : 2,
+		"key" : {
+			"location" : "2d",
+			"type" : 1
+		},
+		"name" : "location_2d_type_1",
+		"ns" : "school.stores"
+	}
+]
+>
+> db.stores.find({location:{$near:[50,50]}})
+```
+
+###### Geospatial Spherical
+
+```
+{
+    "_id":{
+        "$oid":"535471aaf28b4d8ee1e1c86f"
+    },
+    "store_id":8,
+    "loc":{
+        "type":"Point",
+        "coordinates":[
+            -37.47891236119904,
+            4.488667018711567
+        ]
+    }
+}
+```
+
+```
+db.stores.find({ loc:{ $near: { $geometry: { type: "Point", coordinates: [-130, 39]}, $maxDistance:1000000 } } })
+```
+
+###### Text Indexes
+
+```
+db.movies.setIndexes({'words': 'text'})
+db.movies.find( { $text : { $search : "Big Lebowski" } } )
+```
+
+###### Efficiency of Index Used
+
+![](images/29/9.png)
+
+![](images/29/10.png)
+
+```
+"errmsg" : "error processing query: ns=school.studentsTree: $and\n    class_id $eq 54.0\n    student_id $gt 500000.0\nSort: { student_id: 1.0 }\nProj: {}\n planner returned error: bad hint",
+```
+
+###### [Profiling](https://docs.mongodb.com/manual/reference/database-profiler/?_ga=2.126283981.173869112.1523378710-1834989889.1520636077)
+
+![](images/29/11.png)
+
+- Logging slow queries
+
+```sh
+u64@vm:~$ mongod --dbpath /data/db --profile 1 --slowms 2
+```
+
+```sh
+> db.system.profile.find()
+>
+> db.getProfilingLevel()
+0
+> db.getProfilingStatus()
+{ "was" : 0, "slowms" : 100, "sampleRate" : 1 }
+>
+> db.setProfilingLevel(1,4)
+{ "was" : 0, "slowms" : 100, "sampleRate" : 1, "ok" : 1 }
+> db.getProfilingLevel()
+1
+>
+```
+
+###### Mongotop
+
+![](images/29/12.png)
+
+```sh
+u64@vm:~/Desktop$ python stress_students.py
+Did 1000 Searches
+```
+
+```sh
+u64@vm:~$ mongotop 3
+2018-04-12T10:08:18.693-0700	connected to: 127.0.0.1
+
+                    ns     total      read    write    2018-04-12T10:08:21-07:00
+       school.students    1982ms    1982ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:24-07:00
+       school.students    4226ms    4226ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:27-07:00
+       school.students    3751ms    3751ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:30-07:00
+       school.students    1912ms    1912ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:33-07:00
+       school.students    3671ms    3671ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:36-07:00
+       school.students    1833ms    1833ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+                    ns     total      read    write    2018-04-12T10:08:39-07:00
+       school.students    3838ms    3838ms      0ms
+    admin.system.roles       0ms       0ms      0ms
+  admin.system.version       0ms       0ms      0ms
+            blog.posts       0ms       0ms      0ms
+         blog.sessions       0ms       0ms      0ms
+            blog.users       0ms       0ms      0ms
+config.system.sessions       0ms       0ms      0ms
+     local.startup_log       0ms       0ms      0ms
+  local.system.replset       0ms       0ms      0ms
+          test.example       0ms       0ms      0ms
+
+^C2018-04-12T10:08:40.971-0700	signal 'interrupt' received; forcefully terminating
+u64@vm:~$
+```
+
+###### [Mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/)
+
+```sh
+u64@vm:~$ mongostat
+insert query update delete getmore command dirty  used flushes vsize  res qrw arw net_in net_out conn                time
+    *0    *0     *0     *0       0     2|0  0.0% 78.9%       0 1.36G 486M 0|0 1|0   162b   59.9k    1 Apr 12 10:15:02.372
+    *0    *0     *0     *0       0     1|0  0.0% 78.9%       0 1.36G 486M 0|0 1|0   157b   58.2k    1 Apr 12 10:15:03.372
+    *0    *0     *0     *0       0     1|0  0.0% 78.9%       0 1.36G 486M 0|0 1|0   157b   58.2k    1 Apr 12 10:15:04.373
+    *0    *0     *0     *0       0     2|0  0.0% 78.9%       0 1.36G 486M 0|0 1|0   158b   58.4k    1 Apr 12 10:15:05.371
+^C2018-04-12T10:15:05.669-0700	signal 'interrupt' received; forcefully terminating
+u64@vm:~$
+```
+
+###### Sharding
+
+- Splitting a large collection among multiple servers.
+
+![](images/29/13.png)
