@@ -1,4 +1,4 @@
-#### 30. Aggregation
+#### 30. [Aggregation](https://docs.mongodb.com/manual/aggregation/)
 
 ###### Framework
 
@@ -506,3 +506,362 @@ switched to db agg
 bye
 u64@vm:~/Desktop$
 ```
+
+###### Double group stages
+
+`single_group__m101p_52b1f5b5e2d4235b7e5ebb87.js`
+
+```js
+use agg
+db.grades.aggregate([
+    {'$group':{_id:{class_id:"$class_id", student_id:"$student_id"}, 'average':{"$avg":"$score"}}}])
+```
+
+```sh
+u64@vm:~/Desktop$ mongo < single_group__m101p_52b1f5b5e2d4235b7e5ebb87.js
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+switched to db agg
+bye
+u64@vm:~/Desktop$
+```
+
+`double_group__m101p_52b1f544e2d4235b7e5ebb84.js`
+
+```js
+use agg
+db.grades.aggregate([
+    {'$group':{_id:{class_id:"$class_id", student_id:"$student_id"}, 'average':{"$avg":"$score"}}},
+    {'$group':{_id:"$_id.class_id", 'average':{"$avg":"$average"}}}])
+```
+
+```sh
+u64@vm:~/Desktop$ mongo < double_group__m101p_52b1f544e2d4235b7e5ebb84.js
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+switched to db agg
+bye
+u64@vm:~/Desktop$
+```
+
+###### project
+
+![](images/30/7.png)
+
+`quiz_using_project__m101p_52b1f62ae2d42360b66c713f.js`
+
+```js
+use agg
+db.zips.aggregate([{$project:{_id:0, city:{$toLower:"$city"}, pop:1, state:1, zip:"$_id"}}])
+```
+
+```sh
+u64@vm:~/Desktop$ mongo < quiz_using_project__m101p_52b1f62ae2d42360b66c713f.js
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+switched to db agg
+bye
+u64@vm:~/Desktop$
+```
+
+`reshape_products__m101p_52b1f77ee2d42360b66c7140.js`
+
+```js
+use agg
+db.products.aggregate([
+    {$project:
+     {
+	 _id:0,
+	 'maker': {$toLower:"$manufacturer"},
+	 'details': {'category': "$category",
+		     'price' : {"$multiply":["$price",10]}
+		    },
+	 'item':'$name'
+     }
+    }
+])
+```
+
+```sh
+u64@vm:~/Desktop$ mongo < reshape_products__m101p_52b1f77ee2d42360b66c7140.js
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+switched to db agg
+{ "maker" : "apple", "details" : { "category" : "Tablets", "price" : 4990 }, "item" : "iPad 16GB Wifi" }
+{ "maker" : "apple", "details" : { "category" : "Tablets", "price" : 5990 }, "item" : "iPad 32GB Wifi" }
+{ "maker" : "apple", "details" : { "category" : "Tablets", "price" : 6990 }, "item" : "iPad 64GB Wifi" }
+{ "maker" : "samsung", "details" : { "category" : "Cell Phones", "price" : 5639.9 }, "item" : "Galaxy S3" }
+{ "maker" : "samsung", "details" : { "category" : "Tablets", "price" : 4509.9 }, "item" : "Galaxy Tab 10" }
+{ "maker" : "sony", "details" : { "category" : "Laptops", "price" : 4990 }, "item" : "Vaio" }
+{ "maker" : "apple", "details" : { "category" : "Laptops", "price" : 4990 }, "item" : "Macbook Air 13inch" }
+{ "maker" : "google", "details" : { "category" : "Tablets", "price" : 1990 }, "item" : "Nexus 7" }
+{ "maker" : "amazon", "details" : { "category" : "Tablets", "price" : 1290 }, "item" : "Kindle Paper White" }
+{ "maker" : "amazon", "details" : { "category" : "Tablets", "price" : 1990 }, "item" : "Kindle Fire" }
+bye
+u64@vm:~/Desktop$
+```
+
+###### match
+
+`match__m101p_52b203fce2d42362670d8234.js`
+
+```js
+use agg
+db.zips.aggregate([
+    {$match:
+     {
+	 state:"NY"
+     }
+    }
+])
+```
+
+`match_and_group__m101p_52b20442e2d42362670d8235.js`
+
+```js
+use agg
+db.zips.aggregate([
+    {$match:
+     {
+	 state:"NY"
+     }
+    },
+    {$group:
+     {
+	 _id: "$city",
+	 population: {$sum:"$pop"},
+	 zip_codes: {$addToSet: "$_id"}
+     }
+    }
+])
+```
+
+`match_group_and_project__m101p_52b20448e2d42362670d8236.js`
+
+```js
+use agg
+db.zips.aggregate([
+    {$match:
+     {
+	 state:"NY"
+     }
+    },
+    {$group:
+     {
+	 _id: "$city",
+	 population: {$sum:"$pop"},
+	 zip_codes: {$addToSet: "$_id"}
+     }
+    },
+    {$project:
+     {
+	 _id: 0,
+	 city: "$_id",
+	 population: 1,
+	 zip_codes:1
+     }
+    }
+
+])
+```
+
+###### text
+
+![](images/30/8.png)
+
+![](images/30/9.png)
+
+![](images/30/10.png)
+
+![](images/30/11.png)
+
+![](images/30/12.png)
+
+###### sort
+
+![](images/30/13.png)
+
+`sort__m101p_52b20714e2d42362670d823d.js`
+
+```js
+use agg
+db.zips.aggregate([
+    {$match:
+     {
+	 state:"NY"
+     }
+    },
+    {$group:
+     {
+	 _id: "$city",
+	 population: {$sum:"$pop"},
+     }
+    },
+    {$project:
+     {
+	 _id: 0,
+	 city: "$_id",
+	 population: 1,
+     }
+    },
+    {$sort:
+     {
+	 population:-1
+     }
+    }
+
+
+
+])
+```
+
+![](images/30/14.png)
+
+###### limit and skip
+
+![](images/30/15.png)
+
+`limit__m101p_52b2071ae2d42362670d823e.js`
+
+```js
+use agg
+db.zips.aggregate([
+    {$match:
+     {
+	 state:"NY"
+     }
+    },
+    {$group:
+     {
+	 _id: "$city",
+	 population: {$sum:"$pop"},
+     }
+    },
+    {$project:
+     {
+	 _id: 0,
+	 city: "$_id",
+	 population: 1,
+     }
+    },
+    {$sort:
+     {
+	 population:-1
+     }
+    },
+    {$skip: 10},
+    {$limit: 5}
+])
+```
+
+![](images/30/16.png)
+
+###### first and last
+
+![](images/30/17.png)
+
+`first__m101p_52b208b6e2d42362670d8247.js`
+
+```js
+use agg
+db.zips.aggregate([
+    /* get the population of every city in every state */
+    {$group:
+     {
+	 _id: {state:"$state", city:"$city"},
+	 population: {$sum:"$pop"},
+     }
+    },
+     /* sort by state, population */
+    {$sort:
+     {"_id.state":1, "population":-1}
+    },
+
+    /* group by state, get the first item in each group */
+    {$group:
+     {
+	 _id:"$_id.state",
+	 city: {$first: "$_id.city"},
+	 population: {$first:"$population"}
+     }
+    },
+
+    /* now sort by state again */
+    {$sort:
+     {"_id":1}
+    }
+])
+```
+
+![](images/30/18.png)
+
+`first_phase1__m101p_52b208b4e2d42362670d8245.js`
+
+```js
+use agg
+db.zips.aggregate([
+    /* get the population of every city in every state */
+    {$group:
+     {
+	 _id: {state:"$state", city:"$city"},
+	 population: {$sum:"$pop"},
+     }
+    }
+])
+```
+
+![](images/30/19.png)
+
+`first_phase2__m101p_52b208b3e2d42362670d8244.js`
+
+```js
+use agg
+db.zips.aggregate([
+    /* get the population of every city in every state */
+    {$group:
+     {
+	 _id: {state:"$state", city:"$city"},
+	 population: {$sum:"$pop"},
+     }
+    },
+     /* sort by state, population */
+    {$sort:
+     {"_id.state":1, "population":-1}
+    }
+])
+```
+
+![](images/30/20.png)
+
+`first_phase3__m101p_52b208b2e2d42362670d8243.js`
+
+```js
+use agg
+db.zips.aggregate([
+    /* get the population of every city in every state */
+    {$group:
+     {
+	 _id: {state:"$state", city:"$city"},
+	 population: {$sum:"$pop"},
+     }
+    },
+     /* sort by state, population */
+    {$sort:
+     {"_id.state":1, "population":-1}
+    },
+    /* group by state, get the first item in each group */
+    {$group:
+     {
+	 _id:"$_id.state",
+	 city: {$first: "$_id.city"},
+	 population: {$first:"$population"}
+     }
+    }
+])
+```
+
+![](images/30/21.png)
