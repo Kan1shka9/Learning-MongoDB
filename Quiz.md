@@ -5,6 +5,7 @@
 - [Week 3](#week-3)
 - [Week 4](#week-4)
 - [Week 5](#week-5)
+- [Week 6](#week-6)
 
 ###### Week 1
 
@@ -223,3 +224,15 @@
 ![](images/quiz/104.png)
 
 ![](images/quiz/105.png)
+
+###### Week 6
+
+![](images/quiz/106.png)
+
+![](images/quiz/107.png)
+
+![](images/quiz/108.png)
+
+![](images/quiz/109.png)
+
+![](images/quiz/110.png)
